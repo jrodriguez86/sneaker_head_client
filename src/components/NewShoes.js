@@ -6,6 +6,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 
+
 class NewShoes extends React.Component {
     state = {
         
@@ -41,14 +42,15 @@ class NewShoes extends React.Component {
     
     render() {
             return (
-              <Jumbotron className='newformjumbo'>
+              <div className="new_shoes_container">
+              <Jumbotron>
                  <h1 className="comment-title">Add new Kicks to collection</h1>
                <Form onSubmit={this.handleSubmit}>
                  
                  <Form.Row>
                    <Form.Control className="newform" type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Name" />
-                   <Form.Control className="newform" type="text" id="comments" name="comments" onChange={this.handleChange} value={this.state.brand} placeholder="Comment" />
-                   <Form.Control className="newform" type="text" id="location" name="location" onChange={this.handleChange} value={this.state.year} placeholder="Location" />
+                   <Form.Control className="newform" type="text" id="comments" name="comments" onChange={this.handleChange} value={this.state.brand} placeholder="Brand" />
+                   <Form.Control className="newform" type="text" id="location" name="location" onChange={this.handleChange} value={this.state.year} placeholder="Year" />
                    <br/><br/>
                    <Button type="submit" value="Submit">Add Kicks</Button>
               </Form.Row>
@@ -56,6 +58,7 @@ class NewShoes extends React.Component {
 
                </Form>  
                </Jumbotron>
+               </div>
             )
         }
 }
