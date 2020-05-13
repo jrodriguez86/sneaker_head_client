@@ -14,39 +14,6 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 
 
-// class ShoeCarasoul extends React.component {
-//   render() {
-//     return (
-//       <Carousel>
-//           <Carousel.Item>
-//           <img fluid="true" id="image_carasoul" className="d-block w-80"
-//               src={sneaker1}
-//               alt="First slide"/>
-//               <Carousel.Caption>
-//       <h3>Nike Dunk SB Low Paris</h3>
-//               </Carousel.Caption>
-//           </Carousel.Item>
-//           <Carousel.Item>
-//           <img fluid="true" id="image_carasoul" className="d-block w-80"
-//               src={sneaker2}
-//               alt="Second slide"/>
-//               <Carousel.Caption>
-//       <h3>adidas Yeezy Boost 700 Wave Runner</h3>
-//               </Carousel.Caption>
-//           </Carousel.Item>
-//           <Carousel.Item>
-//           <img fluid="true" id="image_carasoul" className="d-block w-80"
-//               src={sneaker3}
-//               alt="Third slide"/>
-//               <Carousel.Caption>
-//       <h3>Louis Vuitton Jaspers Kanye Patchwork</h3>
-//               </Carousel.Caption>
-//           </Carousel.Item>
-//         </Carousel>
-//     )
-//   }
-// }
-
 
 
 
@@ -80,34 +47,18 @@ handleAddShoe = (shoes) => {
   })
 }
 
-// handleEditShoe = (data) => {
-//   const newData = this.state.shoes.filter( shoe => {
-//     return shoe._id !== data._id
-//   })
-//   newData.push(data);
-//   this.setState({ 
-//     shoes: newData,
-//     show: false
-//   })
-// }
+handleEditShoe = (data) => {
+  const newData = this.state.shoes.filter( shoe => {
+    return shoe._id !== data._id
+  })
+  newData.push(data);
+  this.setState({ 
+    shoes: newData,
+    show: false
+  })
+}
 
-// handleUpdate = (event, formInputs) => {
-//   event.preventDefault()
-//   console.log('in it to win it')
-//   fetch(`/notices/${formInputs.id}`, {
-//     body: JSON.stringify(formInputs),
-//     method: 'PUT',
-//  headers: {
-//    'Accept': 'application/json, text/plain, */*',
-//    'Content-Type': 'application/json'
-//  }
-// })
-//  .then(updatedNotice => {
-//    // go wild
-//    this.getNotices()
-//  })
-//  .catch(error => console.log(error))
-// }
+
 
 //for edit route
 getEditShoe = (shoe) => {
@@ -133,8 +84,10 @@ handleDelete = (deletedShoe) => {
  .catch(error => console.log(error))
 }
 
+
+
   render() {
-    // console.log(this.state.shoes)
+    console.log(this.state.shoes)
     return (
       <>
         <nav>
@@ -182,8 +135,9 @@ handleDelete = (deletedShoe) => {
       <Card.Text>{shoe.brand}</Card.Text>
       <Card.Text>{shoe.year}</Card.Text>
     </Card.Body>
-    <Button className="Edit-Button" govariant="primary" onClick={() => {this.getEditShoe(shoe)} }>Edit</Button>
-      <Button variant="secondary" onClick={() => this.handleDelete(shoe)}>Delete</Button>
+    <Button className="Edit-Button" govariant="primary" handleSubmit={this.handleSubmit} onClick={() => {this.getEditShoe(shoe)} }>Edit</Button>
+    <br />
+      <Button variant="secondary" className="Delete-Button" onClick={() => this.handleDelete(shoe)}>Delete</Button>
   </Card>
  
       )})} 

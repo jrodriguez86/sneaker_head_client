@@ -48,7 +48,7 @@ class NewShoes extends React.Component {
     render() {
             return (
               <div className="new_shoes_container">
-              <Jumbotron className="jumbo">
+              
                  <h1 className="comment-title">Need to add new kicks?</h1>
                <Form onSubmit={this.handleSubmit}>
                  
@@ -63,7 +63,7 @@ class NewShoes extends React.Component {
          
 
                </Form>  
-               </Jumbotron>
+               
                </div>
             )
         }

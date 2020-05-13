@@ -10,17 +10,26 @@ import Form from 'react-bootstrap/Form'
 
 class UpdateShoeModal extends React.Component {
 
-
+  componentWillMount (){
+    if (this.props.shoe) {
+      this.setState({
+        image_url: this.props.shoe.image_url || '',
+        name: this.props.shoe.name || '',
+        brand: this.props.shoe.brand || '',
+        year: this.props.shoe.year || ''
+      })
+    }
+  }
   
   handleSubmit = (event) => {
-    
+    //   event.preventDefault()
       //send the data to the server
-      fetch('http://localhost:3000/shoes/' + this.props.shoe._id, {
+      fetch(`http://localhost:3000/shoes/${this.props.shoe.id}`, {
           method: 'PUT',
           body: JSON.stringify({
               image_url: this.state.image_url,
               name: this.state.name,
-              brand: this.state.comments,
+              brand: this.state.brand,
               year: this.state.year
           }),
           headers: {
@@ -31,8 +40,11 @@ class UpdateShoeModal extends React.Component {
       .then (res => res.json())
       .then (resJson => {
           //add the received data to state in app
-          this.props.handleEditRequest(resJson)
+          this.props.handleEditShoe(resJson)
           this.setState({image_url: '', name: '', brand: '', year: ''})
+          
+      }).then (() => {
+        this.props.getShoes()
       }).catch (error => console.error({'Error': error}))
   }
   
