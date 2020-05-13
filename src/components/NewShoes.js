@@ -9,7 +9,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 class NewShoes extends React.Component {
     state = {
-        
+            image_url: '',
             name: '',
             brand: '',
             year: '',
@@ -24,33 +24,39 @@ class NewShoes extends React.Component {
         event.preventDefault()
         fetch('http://localhost:3000/shoes', {
           method: 'POST',
-          body: JSON.stringify({name: this.state.name, brand: this.state.brand, year: this.state.year}),
+          body: JSON.stringify({image_url: this.state.image_url, name: this.state.name, brand: this.state.brand, year: this.state.year}),
           headers: {
             'Content-Type': 'application/json'
           }
         }).then (res => res.json())
           .then (resJson => {
-            this.props.handleAddRequest(resJson)
-            this.setState({
-              name: '',
-              brand: '',
-              year: ''
-            })
-        }).catch (error => console.error({'Error': error}))
+            this.props.handleAddShoe(resJson)
+            
+            // this.setState({
+            //   image_url: '',
+            //   name: '',
+            //   brand: '',
+            //   year: ''
+            // })
+        }).then (() => {
+          this.props.getShoes()
+        })
+        .catch (error => console.error({'Error': error}))
       }
     
     
     render() {
             return (
               <div className="new_shoes_container">
-              <Jumbotron>
-                 <h1 className="comment-title">Add new Kicks to collection</h1>
+              <Jumbotron className="jumbo">
+                 <h1 className="comment-title">Need to add new kicks?</h1>
                <Form onSubmit={this.handleSubmit}>
                  
                  <Form.Row>
+                 <Form.Control className="newform" type="text" id="image_url" name="image_url" onChange={this.handleChange} value={this.state.image_url} placeholder="Add image link here" />
                    <Form.Control className="newform" type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Name" />
-                   <Form.Control className="newform" type="text" id="comments" name="comments" onChange={this.handleChange} value={this.state.brand} placeholder="Brand" />
-                   <Form.Control className="newform" type="text" id="location" name="location" onChange={this.handleChange} value={this.state.year} placeholder="Year" />
+                   <Form.Control className="newform" type="text" id="brand" name="brand" onChange={this.handleChange} value={this.state.brand} placeholder="Brand" />
+                   <Form.Control className="newform" type="text" id="year" name="year" onChange={this.handleChange} value={this.state.year} placeholder="Year" />
                    <br/><br/>
                    <Button type="submit" value="Submit">Add Kicks</Button>
               </Form.Row>

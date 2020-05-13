@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 nav {
   background-color: black;
   
@@ -18,12 +20,42 @@ nav {
   margin: auto;
 }
 
+h3 {
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
 .new_shoes_container {
   background-color: black;
-  padding: 40px;
+  padding: 30px;
+}
+
+.jumbo {
+  background-color: black;
 }
 
 .comment-title {
-  margin: auto;
+  display: flex;
+  justify-content: center;
   font-family: 'Permanent Marker', cursive;
+  color: white;
+}
+
+
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 60px;
+  justify-content: center;
+  margin: auto;
+  background-image: url("./images/graffiti_background.png");
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 30%;
+
 }
