@@ -22,7 +22,7 @@ class NewShoes extends React.Component {
 
       handleSubmit = (event) => {
         event.preventDefault()
-        fetch('https://git.heroku.com/sneaker-head-4.git', {
+        fetch('https://sneaker-head-4.herokuapp.com/', {
           method: 'POST',
           body: JSON.stringify({image_url: this.state.image_url, name: this.state.name, brand: this.state.brand, year: this.state.year}),
           headers: {

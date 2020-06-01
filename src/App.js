@@ -29,7 +29,7 @@ componentDidMount() {
   this.getShoes()
 }
 getShoes = () => {
-  fetch('https://git.heroku.com/sneaker-head-4.git')
+  fetch('https://sneaker-head-4.herokuapp.com/')
     .then(response => response.json())
     .then(json => this.setState({shoes: json.shoes},() => console.log(this.state.shoes)))
     .catch(error => console.error(error))
@@ -70,7 +70,7 @@ handleClose = () => {
 }
 
 handleDelete = (deletedShoe) => {
-  fetch(`https://git.heroku.com/sneaker-head-4.git/${deletedShoe.id}`, {
+  fetch(`https://sneaker-head-4.herokuapp.com//${deletedShoe.id}`, {
      method: 'DELETE',
      headers: {
        'Accept': 'application/json, text/plain, */*',
