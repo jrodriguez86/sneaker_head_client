@@ -29,7 +29,7 @@ componentDidMount() {
   this.getShoes()
 }
 getShoes = () => {
-  fetch('https://sneaker-head-4.herokuapp.com')
+  fetch('https://sneaker-head-4.herokuapp.com/shoes/')
     .then(response => response.json())
     .then(json => this.setState({shoes: json.shoes},() => console.log(this.state.shoes)))
     .catch(error => console.error(error))

@@ -24,7 +24,7 @@ class UpdateShoeModal extends React.Component {
   handleSubmit = (event) => {
     //   event.preventDefault()
       //send the data to the server
-      fetch(`https://sneaker-head-4.herokuapp.com/${this.props.shoe.id}`, {
+      fetch(`https://sneaker-head-4.herokuapp.com/shoes/${this.props.shoe.id}`, {
           method: 'PUT',
           body: JSON.stringify({
               image_url: this.state.image_url,
